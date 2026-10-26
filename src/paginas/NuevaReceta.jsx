@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
-const VACIO = { nombre: '', categoria: 'almuerzo', tiempo: '' };
 
+const VACIO = { nombre: '', categoria: 'almuerzo', tiempo: '' };
 function NuevaReceta({ onAgregar }) {
   const [form, setForm] = useState(VACIO);
   const [error, setError] = useState('');
@@ -10,7 +10,7 @@ function NuevaReceta({ onAgregar }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    console.log(form)
     if (form.nombre.trim() === '') {
       setError('La receta necesita un nombre.');
       return;
@@ -60,7 +60,7 @@ function NuevaReceta({ onAgregar }) {
           <input
             type="number"
             value={form.tiempo}
-            onChange={(e) => setForm({ tiempo: e.target.value })}
+            onChange={(e) => setForm({ ...form, tiempo: e.target.value })}
           />
         </label>
 
