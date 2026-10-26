@@ -34,7 +34,7 @@ function Detalle({ propias, favoritos, onToggleFavorito }) {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [id,propias]);
 
   if (cargando) return <p>Cargando receta…</p>;
   if (!receta) return <p>No encontramos esta receta.</p>;
