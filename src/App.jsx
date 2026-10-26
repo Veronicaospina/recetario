@@ -56,7 +56,7 @@ function App() {
             element={<Favoritos favoritos={favoritos} onQuitar={toggleFavorito} />}
           />
           <Route path="/nueva" element={<NuevaReceta onAgregar={agregarReceta} />} />
-          <Route path="/404" element={<NoEncontrada />} />
+          <Route path="*" element={<NoEncontrada />} />
         </Routes>
       </main>
     </div>
