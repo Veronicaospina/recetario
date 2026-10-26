@@ -19,13 +19,26 @@ function leerFavoritos() {
   }
 }
 
+function leerPropias() {
+  try {
+    const recetas = JSON.parse(localStorage.getItem('propias'));
+    return Array.isArray(recetas) ? recetas : [];
+  } catch {
+    return [];
+  }
+}
+
 function App() {
   const [favoritos, setFavoritos] = useState(leerFavoritos);
-  const [propias, setPropias] = useState([]);
-
+  const [propias, setPropias] = useState(leerPropias);  
+  
   useEffect(() => {
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
   }, [favoritos]);
+
+  useEffect(() => {
+    localStorage.setItem('propias', JSON.stringify(propias));
+  }, [propias]);
 
   function toggleFavorito(id) {
     if (favoritos.includes(id)) {
@@ -36,7 +49,7 @@ function App() {
   }
 
   function agregarReceta(receta) {
-    setPropias([...propias, receta]);
+    setPropias((prev) => [...prev, receta]);
   }
   return (
     <div className="app">
