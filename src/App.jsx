@@ -10,8 +10,9 @@ import NoEncontrada from './paginas/NoEncontrada';
 
 function leerFavoritos() {
   try{
-    JSON.parse(localStorage.getItem('favoritos'))
-    return JSON.parse(localStorage.getItem('favoritos'));
+    let fav = JSON.parse(localStorage.getItem('favoritos'));
+    fav = Array.isArray(fav) ? fav : [];
+    return fav;
   } 
   catch{
     return [];
@@ -38,7 +39,6 @@ function App() {
   function agregarReceta(receta) {
     setPropias([...propias, receta]);
   }
-
   return (
     <div className="app">
       <Navegacion totalFavoritos={favoritos.length} />
