@@ -9,7 +9,13 @@ import NuevaReceta from './paginas/NuevaReceta';
 import NoEncontrada from './paginas/NoEncontrada';
 
 function leerFavoritos() {
-  return JSON.parse(localStorage.getItem('favoritos')) ?? [];
+  try{
+    JSON.parse(localStorage.getItem('favoritos'))
+    return JSON.parse(localStorage.getItem('favoritos'));
+  } 
+  catch{
+    return [];
+  }
 }
 
 function App() {
